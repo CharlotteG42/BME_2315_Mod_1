@@ -8,7 +8,7 @@ import statistics
 patients = []
 
 ## load csv and create patient objects
-with open("C:\\BME 2315\\Assignments\\Metadata and Protein Data for Module 1 (1).csv", "r") as file:
+with open("/Users/charlottegoodwin/Documents/GitHub/BME_2315_Mod_1/Metadata and Protein Data for Module 1 (1).csv", "r") as file:
     reader = csv.DictReader(file)
 
     for row in reader:
@@ -75,3 +75,11 @@ plt.xlabel("pTAU (pg/ug)")
 plt.ylabel("ABeta42 (pg/ug)")
 plt.title("Scatter Plot: pTAU vs ABeta42")
 plt.show()
+
+## One way ANOVA test for ABeta40 levels across APOE groups
+abeta40_44 = [p.abeta40 for p in patients if p.apoe == "4_4"]
+
+f_stat, p_value = stats.f_oneway(abeta40_33, abeta40_34, abeta40_44)
+print(f"One-way ANOVA test results for ABeta40 levels:")
+print(f"F-statistic: {f_stat}")
+print(f"P-value: {p_value}")
